@@ -6,6 +6,10 @@ Enter this into Powershell
 
     iex (Invoke-WebRequest -Uri "https://qi.gs.is-a.dev/QI.ps1" -UseBasicP)
 
+Or
+
+    iex (Invoke-WebRequest -Uri "https://newfies.github.io/Quick-Installer//QI.ps1" -UseBasicP)
+
 ### App Details
 |     | App Name       | ██████ | Official Download Link                                                                                                          | Notes                                      | ██████ | Backup Download Link                                                | Notes                         |
 |-----|----------------|--------|---------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------|--------|---------------------------------------------------------------------|-------------------------------|
