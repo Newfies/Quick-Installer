@@ -24,19 +24,19 @@ Enter this into Powershell
 | #13 | PeaZip         | ██████ |                                                                                                                                 |                                            | ██████ |                                                                     |                               |
 | #14 | Signal         | ██████ |                                                                                                                                 |                                            | ██████ |                                                                     |                               |
 
-|     | App Name | ██████ | Official Download Link | Notes | ██████ | Backup Download Link | Notes |
-|-----|----------|--------|------------------------|-------|--------|----------------------|-------|
-| #15 |          | ██████ |                        |       | ██████ |                      |       |
-| #16 |          | ██████ |                        |       | ██████ |                      |       |
-| #17 |          | ██████ |                        |       | ██████ |                      |       |
-| #18 |          | ██████ |                        |       | ██████ |                      |       |
-| #19 |          | ██████ |                        |       | ██████ |                      |       |
-| #20 |          | ██████ |                        |       | ██████ |                      |       |
-| #21 |          | ██████ |                        |       | ██████ |                      |       |
-| #22 |          | ██████ |                        |       | ██████ |                      |       |
-| #23 |          | ██████ |                        |       | ██████ |                      |       |
-| #24 |          | ██████ |                        |       | ██████ |                      |       |
-| #25 |          | ██████ |                        |       | ██████ |                      |       |
-| #26 |          | ██████ |                        |       | ██████ |                      |       |
-| #27 |          | ██████ |                        |       | ██████ |                      |       |
-| #28 |          | ██████ |                        |       | ██████ |                      |       |
+|     | App Name    | ██████ | Official Download Link | Notes | ██████ | Backup Download Link                                                  | Notes                   |
+|-----|-------------|--------|------------------------|-------|--------|-----------------------------------------------------------------------|-------------------------|
+| #15 | VeraCrypt   | ██████ |                        |       | ██████ | [Click To Download](https://qi.gs.is-a.dev/Installers/VeraCrypt.exe)  | Version 1.26.20         |
+| #16 | Steam       | ██████ |                        |       | ██████ | [Click To Download](https://qi.gs.is-a.dev/)                          |                         |
+| #17 | CloseAll    | ██████ |                        |       | ██████ | [Click To Download](https://qi.gs.is-a.dev/Installers/CloseAll.exe)   | Version 2.0             |
+| #18 | Everything  | ██████ |                        |       | ██████ | [Click To Download](https://qi.gs.is-a.dev/Installers/Everything.exe) | x86, Version 1.4.1.1026 |
+| #19 | NoIP        | ██████ |                        |       | ██████ | [Click To Download](https://qi.gs.is-a.dev/Installers/NoIP.exe)       | Version 4.1.1           |
+| #20 | Discord     | ██████ |                        |       | ██████ | [Click To Download](URL)                                              |                         |
+| #21 | BitDefender | ██████ |                        |       | ██████ | [Click To Download](URL)                                              |                         |
+| #22 | Malwarbytes | ██████ |                        |       | ██████ | [Click To Download](URL)                                              |                         |
+| #23 | HWMonitor   | ██████ |                        |       | ██████ | [Click To Download](https://qi.gs.is-a.dev/Installers/HWMonitor.exe)  | Version 1.56            |
+| #24 | ShareX      | ██████ |                        |       | ██████ | [Click To Download](https://qi.gs.is-a.dev/Installers/ShareX.exe)     | Version 17.0.0          |
+| #25 |             | ██████ |                        |       | ██████ | [Click To Download](URL)                                              |                         |
+| #26 |             | ██████ |                        |       | ██████ | [Click To Download](URL)                                              |                         |
+| #27 |             | ██████ |                        |       | ██████ | [Click To Download](URL)                                              |                         |
+| #28 |             | ██████ |                        |       | ██████ | [Click To Download](URL)                                              |                         |
