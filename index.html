@@ -1,1 +1,43 @@
-<meta http-equiv="refresh" content="3; URL='https://github.com/Newfies/Quick-Installer/blob/main/README.md'" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Markdown Display</title>
+  <!-- Include the marked.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    #markdown-output {
+      border: 1px solid #ccc;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Markdown Content</h1>
+
+  <div id="markdown-output">
+    <!-- Rendered Markdown will appear here -->
+  </div>
+
+  <script>
+    // Fetch the Markdown file
+    fetch('README.md')
+      .then(response => response.text())
+      .then(markdownContent => {
+        // Use marked.js to convert the markdown to HTML
+        document.getElementById('markdown-output').innerHTML = marked(markdownContent);
+      })
+      .catch(err => {
+        console.error('Error loading the markdown file:', err);
+      });
+  </script>
+
+</body>
+</html>
