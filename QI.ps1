@@ -1,96 +1,109 @@
-# This is a template idea
-
 Add-Type -AssemblyName System.Windows.Forms
+Add-Type -AssemblyName System.Drawing
 
-# Create the form
+# App List (App Name, Official Link, Backup Link)
+$apps = @(
+    @{ Name = "VSCodium"; Official = "https://github.com/VSCodium/vscodium/releases/download/1.98.2.25078/VSCodiumUserSetup-x64-1.98.2.25078.exe"; Backup = "https://qi.gs.is-a.dev/Installers/VSCodium.exe" },
+    @{ Name = "Brave Browser"; Official = ""; Backup = "https://qi.gs.is-a.dev/Installers/Brave.exe" },
+    @{ Name = "Audacity"; Official = ""; Backup = "https://qi.gs.is-a.dev/Installers/" },
+    @{ Name = "WaterFox"; Official = ""; Backup = "https://qi.gs.is-a.dev/Installers/" },
+    @{ Name = "Wireshark"; Official = ""; Backup = "https://qi.gs.is-a.dev/Installers/" },
+    @{ Name = "GIMP"; Official = ""; Backup = "https://qi.gs.is-a.dev/Installers/" },
+    @{ Name = "GitHub Desktop"; Official = ""; Backup = "https://qi.gs.is-a.dev/Installers/" },
+    @{ Name = "Git"; Official = ""; Backup = "https://qi.gs.is-a.dev/Installers/Git.exe" },
+    @{ Name = "Git LFS"; Official = ""; Backup = "https://qi.gs.is-a.dev/Installers/GitLFS.exe" },
+    @{ Name = "Python 3"; Official = "x"; Backup = "https://qi.gs.is-a.dev/Installers/Python3.exe" },
+    @{ Name = "Python 2"; Official = ""; Backup = "https://qi.gs.is-a.dev/Installers/" },
+    @{ Name = "Node"; Official = ""; Backup = "https://qi.gs.is-a.dev/Installers/Node.msi" },
+    @{ Name = "PeaZip"; Official = "https://github.com/peazip/PeaZip/releases/download/10.3.0/peazip-10.3.0.WIN64.exe"; Backup = "https://qi.gs.is-a.dev/Installers/Peazip.exe" },
+    @{ Name = "Signal"; Official = ""; Backup = "https://qi.gs.is-a.dev/Installers/" },
+    @{ Name = "VeraCrypt"; Official = ""; Backup = "https://qi.gs.is-a.dev/Installers/VeraCrypt.exe" },
+    @{ Name = "Steam"; Official = ""; Backup = "https://qi.gs.is-a.dev/" },
+    @{ Name = "CloseAll"; Official = ""; Backup = "https://qi.gs.is-a.dev/Installers/CloseAll.exe" },
+    @{ Name = "Everything"; Official = ""; Backup = "https://qi.gs.is-a.dev/Installers/Everything.exe" },
+    @{ Name = "NoIP"; Official = ""; Backup = "https://qi.gs.is-a.dev/Installers/NoIP.exe" },
+    @{ Name = "Discord"; Official = ""; Backup = "https://example.com/unfinished.exe" },
+    @{ Name = "BitDefender"; Official = ""; Backup = "https://example.com/unfinished.exe" },
+    @{ Name = "Malwarebytes"; Official = ""; Backup = "https://example.com/unfinished.exe" },
+    @{ Name = "HWMonitor"; Official = ""; Backup = "https://qi.gs.is-a.dev/Installers/HWMonitor.exe" },
+    @{ Name = "ShareX"; Official = ""; Backup = "https://qi.gs.is-a.dev/Installers/ShareX.exe" }
+)
+
+# GUI Window
 $form = New-Object System.Windows.Forms.Form
-$form.Text = 'Select Programs to Install'
-$form.Size = New-Object System.Drawing.Size(300, 250)
-$form.StartPosition = 'CenterScreen'
+$form.Text = "Quick Installer"
+$form.Size = New-Object System.Drawing.Size(500,600)
+$form.StartPosition = "CenterScreen"
 
-# Create a checkbox for Program 1
-$checkbox1 = New-Object System.Windows.Forms.CheckBox
-$checkbox1.Text = "Program 1"
-$checkbox1.Location = New-Object System.Drawing.Point(20, 20)
-$form.Controls.Add($checkbox1)
+# Scrollable Panel
+$panel = New-Object System.Windows.Forms.Panel
+$panel.Size = New-Object System.Drawing.Size(480, 500)
+$panel.Location = New-Object System.Drawing.Point(10, 10)
+$panel.AutoScroll = $true
+$form.Controls.Add($panel)
 
-# Create a checkbox for Program 2
-$checkbox2 = New-Object System.Windows.Forms.CheckBox
-$checkbox2.Text = "Program 2"
-$checkbox2.Location = New-Object System.Drawing.Point(20, 60)
-$form.Controls.Add($checkbox2)
+# Install Button
+$installButton = New-Object System.Windows.Forms.Button
+$installButton.Text = "Install Selected"
+$installButton.Size = New-Object System.Drawing.Size(150, 30)
+$installButton.Location = New-Object System.Drawing.Point(175, 520)
+$form.Controls.Add($installButton)
 
-# Create a checkbox for Program 3
-$checkbox3 = New-Object System.Windows.Forms.CheckBox
-$checkbox3.Text = "Program 3"
-$checkbox3.Location = New-Object System.Drawing.Point(20, 100)
-$form.Controls.Add($checkbox3)
+# UI Elements Storage
+$selections = @{}
 
-# Create a Confirm button
-$button = New-Object System.Windows.Forms.Button
-$button.Text = "Confirm"
-$button.Location = New-Object System.Drawing.Point(20, 140)
-$button.Size = New-Object System.Drawing.Size(75, 23)
+# Generate App List
+$yPos = 10
+foreach ($app in $apps) {
+    $groupBox = New-Object System.Windows.Forms.GroupBox
+    $groupBox.Text = $app.Name
+    $groupBox.Size = New-Object System.Drawing.Size(450, 50)
+    $groupBox.Location = New-Object System.Drawing.Point(10, $yPos)
 
-# Define the button click action
-$button.Add_Click({
-    # Array to store programs selected by user
-    $selectedPrograms = @()
+    # Create Radio Buttons
+    $radioPrimary = New-Object System.Windows.Forms.RadioButton
+    $radioPrimary.Text = "Primary"
+    $radioPrimary.Location = New-Object System.Drawing.Point(10, 20)
+    $radioPrimary.Checked = $false
 
-    if ($checkbox1.Checked) {
-        $selectedPrograms += "Program 1"
-    }
-    if ($checkbox2.Checked) {
-        $selectedPrograms += "Program 2"
-    }
-    if ($checkbox3.Checked) {
-        $selectedPrograms += "Program 3"
-    }
+    $radioBackup = New-Object System.Windows.Forms.RadioButton
+    $radioBackup.Text = "Backup"
+    $radioBackup.Location = New-Object System.Drawing.Point(100, 20)
+    $radioBackup.Checked = $false
 
-    # Display message with selected programs
-    if ($selectedPrograms.Count -gt 0) {
-        [System.Windows.Forms.MessageBox]::Show("You selected: " + ($selectedPrograms -join ", "), "Programs Selected")
-        # Here, you can start the download process for selected programs
-        foreach ($program in $selectedPrograms) {
-            # Call the download function for each selected program
-            Start-DownloadProcess $program
-        }
-    } else {
-        [System.Windows.Forms.MessageBox]::Show("No programs selected!", "Error")
-    }
-    $form.Close()
-})
+    $radioNone = New-Object System.Windows.Forms.RadioButton
+    $radioNone.Text = "None"
+    $radioNone.Location = New-Object System.Drawing.Point(200, 20)
+    $radioNone.Checked = $true
 
-$form.Controls.Add($button)
+    $groupBox.Controls.Add($radioPrimary)
+    $groupBox.Controls.Add($radioBackup)
+    $groupBox.Controls.Add($radioNone)
+    $panel.Controls.Add($groupBox)
 
-# Function to download selected program (example)
-function Start-DownloadProcess {
-    param($program)
-    switch ($program) {
-        "Program 1" {
-            $url = "https://example.com/program1.exe"
-            $path = "$env:TEMP\program1.exe"
-        }
-        "Program 2" {
-            $url = "https://example.com/program2.exe"
-            $path = "$env:TEMP\program2.exe"
-        }
-        "Program 3" {
-            $url = "https://example.com/program3.exe"
-            $path = "$env:TEMP\program3.exe"
-        }
-        default {
-            return
-        }
-    }
+    # Store selections
+    $selections[$app.Name] = @{ Primary = $radioPrimary; Backup = $radioBackup; None = $radioNone }
 
-    # Download the program
-    Invoke-WebRequest -Uri $url -OutFile $path
-    # Run the installer silently (if applicable)
-    Start-Process -FilePath $path -ArgumentList "/silent" -Wait
-    # Clean up by removing the installer
-    Remove-Item -Path $path
+    $yPos += 60
 }
 
-# Show the form
+# Install Button Click Event
+$installButton.Add_Click({
+    foreach ($app in $apps) {
+        $selected = $selections[$app.Name]
+        
+        if ($selected.Primary.Checked) {
+            $url = if ($app.Official -match "\.exe$|\.msi$") { $app.Official } else { "https://example.com/unfinished.exe" }
+        } elseif ($selected.Backup.Checked) {
+            $url = if ($app.Backup -match "\.exe$|\.msi$") { $app.Backup } else { "https://example.com/unfinished.exe" }
+        } else {
+            continue
+        }
+
+        Write-Host "Downloading: $app.Name from $url"
+        Start-Process "cmd.exe" -ArgumentList "/c start $url"
+    }
+})
+
+# Run Form
 $form.ShowDialog()
