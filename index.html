@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Markdown Display</title>
-  <!-- Include the marked.js library -->
+  <!-- Load the correct marked.js version -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <style>
     body {
@@ -27,16 +27,15 @@
   </div>
 
   <script>
-    // Fetch the Markdown file
-    fetch('https://newfies.github.io/Quick-Installer/README.md')
-      .then(response => response.text())
-      .then(markdownContent => {
-        // Use marked.js to convert the markdown to HTML
-        document.getElementById('markdown-output').innerHTML = marked(markdownContent);
-      })
-      .catch(err => {
-        console.error('Error loading the markdown file:', err);
-      });
+    // Ensure marked.js is properly accessed
+    document.addEventListener("DOMContentLoaded", function() {
+      fetch('https://newfies.github.io/Quick-Installer/README.md')
+        .then(response => response.text())
+        .then(markdownContent => {
+          document.getElementById('markdown-output').innerHTML = marked.parse(markdownContent);
+        })
+        .catch(err => console.error('Error loading the markdown file:', err));
+    });
   </script>
 
 </body>
